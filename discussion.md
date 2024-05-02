@@ -31,15 +31,11 @@ racket compiler.rkt -v test-programs/sum1.irv
 
 (Also pass in -m for Mac)
 
-sum1.irv: ((mov-lit r0 5) (mov-lit r1 8) (mov-lit r2 0) (add r2 r1) (add r2 r0) (print r2))
-sum0.irv: ((mov-lit r0 5) (mov-lit r1 8) (mov-lit r2 0) (add r2 r1) (add r2 r0) (print r2))
-zero.irv: ((mov-lit r0 0) (print r0))
 
 IR-Virtual is a simplified form of code used by compilers to help make programs work on different types of computers without needing specific adjustments for each one. Unlike x86 assembly, which is closely tied to
-specific types of processors, IR-Virtual is more general and can be adapted more easily to various systems.
-This makes it useful for optimizing and transforming code in a broad way without getting stuck by the details
-of the hardware. However, because it is a more abstract form of code, it might not always take full
-advantage of the unique features of specific hardware as effectively as x86 assembly can.
+specific types of processors, IR-Virtual is more general, which means it doesn't need to concern itself
+with the physical constraints of any particular hardware. Also, it provides a cleaner structured
+form of the program compared with x86. The pros of IR-Virtual is that it useful for optimizing and transforming code in a broad way without getting stuck by the details of the hardware. It's cons is that since it uses virtual registers and abstract representations, it may increased compiler complexity.
 
 
 [ Question 2 ] 
@@ -59,6 +55,20 @@ carefully the relevance of each of the intermediate representations.
 
 For this question, please add your `.ifa` programs either (a) here or
 (b) to the repo and write where they are in this file.
+
+We added 23.ifa, arith3.ifa, and arith4.ifa in test-programs
+
+23.ifa:
+Input: 23
+Output: 23
+
+arith3.ifa:
+Input: (* (+ 1 (* 4 5) 9))
+Output: 30
+
+arith4.ifa:
+Input: (+ 4 9)
+Output: 13
 
 [ Question 3 ] 
 
