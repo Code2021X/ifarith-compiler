@@ -31,6 +31,17 @@ racket compiler.rkt -v test-programs/sum1.irv
 
 (Also pass in -m for Mac)
 
+sum1.irv: ((mov-lit r0 5) (mov-lit r1 8) (mov-lit r2 0) (add r2 r1) (add r2 r0) (print r2))
+sum0.irv: ((mov-lit r0 5) (mov-lit r1 8) (mov-lit r2 0) (add r2 r1) (add r2 r0) (print r2))
+zero.irv: ((mov-lit r0 0) (print r0))
+
+IR-Virtual is a simplified form of code used by compilers to help make programs work on different types of computers without needing specific adjustments for each one. Unlike x86 assembly, which is closely tied to
+specific types of processors, IR-Virtual is more general and can be adapted more easily to various systems.
+This makes it useful for optimizing and transforming code in a broad way without getting stuck by the details
+of the hardware. However, because it is a more abstract form of code, it might not always take full
+advantage of the unique features of specific hardware as effectively as x86 assembly can.
+
+
 [ Question 2 ] 
 
 For this task, you will write three new .ifa programs. Your programs
