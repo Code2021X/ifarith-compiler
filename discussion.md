@@ -82,6 +82,8 @@ there could be more?
 In answering this question, you must use specific examples that you
 got from running the compiler and generating an output.
 
+Input: (+ 4 9) Stage1: '+' is recognized as 'bop?', '4' and '9' are literals, the output is the same, in this step it just checks the form. Stage2: the input is already a basic arithmetic operation, so the output still the same. Stage3: input will be transformed into ANF, the output will be (let ([v1 4] [v2 9]) (+ v1 v2)). Stage4: each value and operation should be assigned to a virtual register, the output will be 'mov-lit v1, 4'; 'mov-lit v2, 9'; 'add v3, v1, v2'. Stage5: it will convert virtual registers into x86 registers. Step6: it will convert x86 into NASM assembly, which leads to the final result 13. If the input is just a single literal or a basic arithmetic operation, then the passes in stage1 and stage2 could be redundant.
+
 [ Question 4 ] 
 
 This is a larger project, compared to our previous projects. This
@@ -91,6 +93,8 @@ project that we discussed in class this semester. There is no specific
 definition of what an idiom is: think carefully about whether you see
 any pattern in this code that resonates with you from earlier in the
 semester.
+
+In the function 'ifarith->ifarith-tiny', all the match forms for 'let*' are tail recursions. In function 'ifarith-tiny->anf', it uses lambda expressions, and it has some relation to lambda calculus. In function 'reg->stackpos', 'reachable-labels' and 'registers', it uses foldl and hash tables, 'translated-instrs' uses foldl.
 
 [ Question 5 ] 
 
@@ -119,4 +123,6 @@ be increasingly important to have technical conversations about the
 nuts and bolts of code, try to use this experience as a way to think
 about how you would approach doing group code critique. What would you
 do differently next time, what did you learn?
+
+From this project, we learned a new type of compiler. It’s different from the previous compiler we compiled. It has several layers, each of them is like a form transition, and we figured out their principles and the approaches to achieve. We also learned new concepts such as virtual registers and stack allocation. We implemented translators, how to represent input in Administrative Normal Form. One interesting part we found is the instructions in ‘ir-virtual?’. They are not like any types we learned before, and it’s not easy to remember them the first time we saw them. But after understanding what’s the purpose of it, it’s quite straightforward. The most challenging part our group found was the debugging part. It’s usually spending much more time on debugging than designing the program. And it’s more difficult to debug on a large program that contains a lot of new concepts. But luckily, with the help of the clear and detailed instructions that professor gave to us and all the efforts us group members put in, we successfully overcame the challenge. From this group project, we learned the importance of group working. It’s not just working together, but how each of you divide the work, how to communicate immediately to increase efficiency. It’s really a precious opportunity to do the project with others, and we all think it’s of great help for our future career.
 
