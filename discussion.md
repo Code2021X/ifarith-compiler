@@ -31,6 +31,22 @@ racket compiler.rkt -v test-programs/sum1.irv
 
 (Also pass in -m for Mac)
 
+one.irv:
+((mov-lit r0 1) (print r0))
+
+add.irv:
+((move-lit r0 3)
+(move-lit r1 4)
+(mov-lit r2 0)
+(add r2 r1 r0)
+(print r2))
+
+sub.irv:
+((mov-lit r0 1)
+(move-lit r1 2)
+(move-lit r2 0)
+(sub r2 r1 r0)
+(print r2))
 
 IR-Virtual is a simplified form of code used by compilers to help make programs work on different types of computers without needing specific adjustments for each one. Unlike x86 assembly, which is closely tied to
 specific types of processors, IR-Virtual is more general, which means it doesn't need to concern itself
@@ -65,6 +81,7 @@ Output: 23
 arith3.ifa:
 Input: (* (+ 1 (* 4 5) 9))
 Output: 30
+First, it's simplified from its original, complex form into a clearer set of steps in IfArithTiny. Then, it's organized into straightforward instructions in Administrative Normal Form (ANF), turned into a sort of virtual computer code in IR-Virtual, detailed further into x86 assembly language, and finally compiled into a NASM file that the computer can execute.
 
 arith4.ifa:
 Input: (+ 4 9)
