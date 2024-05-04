@@ -131,6 +131,8 @@ ask me.
 Your team will receive a small bonus for being the first team to
 report a unique bug (unique determined by me).
 
+Some things related to letfunction will report errors and display let*: bad syntax (not an identifier and expression for a binding) in: (x = 5) (prim-plus) let*: bad syntax (not an identifier and expression for a binding) in: (x = 5) (const.ifa) error message, so we say that this is an unfixed bug. The compile.rkt cannot support greater than and less than when running .ifa files, only =. When we run a function that contains < or >, the error message is a matching error. When we run a function that contains =, the terminal will display the expected output. This is also a potential bug.
+
 [ High Level Reflection ] 
 
 In roughly 100-500 words, write a summary of your findings in working
